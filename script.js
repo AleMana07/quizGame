@@ -42,7 +42,7 @@ function startQuiz() {
 
 function generateRandom(){
     if(rows.length>=1){
-        randomList = Math.floor(Math.random()*rows);
+        randomList = Math.floor(Math.random()*rows.length);
         rows.splice(randomList,1);
     }else{
         for(let i=0;i<questions.length;i++){

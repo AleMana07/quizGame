@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz a Tempo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Quiz a Tempo</h1>
+        
+        <!-- Schermata iniziale -->
+        <div id="start-screen" class="screen">
+            <button id="start-btn">Inizia il Quiz!</button>
+        </div>
+
+        <!-- Schermata di gioco -->
+        <div id="quiz-screen" class="screen hidden">
+            <div class="timer">Tempo: <span id="time">30</span>s</div>
+            <div class="score">Punteggio: <span id="score">0</span></div>
+            <div id="question" class="question"></div>
+            <div id="options" class="options"></div>
+        </div>
+
+        <!-- Schermata dei risultati -->
+        <div id="result-screen" class="screen hidden">
+            <h2>Quiz Completato!</h2>
+            <p>Il tuo punteggio: <span id="final-score">0</span></p>
+            <input type="text" id="player-name" placeholder="Inserisci il tuo nome">
+            <button id="save-btn">Salva Punteggio</button>
+            <div id="leaderboard" class="leaderboard"></div>
+            <button id="restart-btn">Rigioca</button>
+        </div>
+    </div>
+    <footer>
+        <p>Made by Alessandro Manara</p>
+    </footer>
+
+    <script src="questions.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

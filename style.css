@@ -96,3 +96,7 @@ footer{
     margin-bottom: 0;
     padding-right: 10px;
 }
+
+#player-name{
+    overflow-y: hidden;
+}

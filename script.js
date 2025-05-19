@@ -5,7 +5,10 @@ let timeLeft = 30;
 let timer;
 let leaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [];
 let randomList = 0;
-let rows = questions.length;
+let rows = [];
+for(let i=0;i<questions.length;i++){
+    rows[i] = 0;
+}
 let columns = questions[1].length;
 let wrong = false;
 console.log("righe: "+rows);
@@ -38,7 +41,15 @@ function startQuiz() {
 }
 
 function generateRandom(){
-    randomList = Math.floor(Math.random()*rows);
+    if(rows.length>=1){
+        randomList = Math.floor(Math.random()*rows);
+        rows.splice(randomList,1);
+    }else{
+        for(let i=0;i<questions.length;i++){
+            rows[i] = 0;
+        }
+    }
+    
 }
 
 // Carica una domanda

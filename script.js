@@ -5,9 +5,10 @@ let timeLeft = 30;
 let timer;
 let leaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [];
 let randomList = 0;
+let indexRandom = 0;
 let rows = [];
 for(let i=0;i<questions.length;i++){
-    rows[i] = 0;
+    rows[i] = i;
 }
 let columns = questions[1].length;
 let wrong = false;
@@ -42,12 +43,16 @@ function startQuiz() {
 
 function generateRandom(){
     if(rows.length>=1){
-        randomList = Math.floor(Math.random()*rows.length);
-        rows.splice(randomList,1);
+        indexRandom = Math.floor(Math.random()*rows.length);
+        randomList = rows[indexRandom];
+        console.log("righe: "+rows);
     }else{
         for(let i=0;i<questions.length;i++){
-            rows[i] = 0;
+            rows[i] = i;
         }
+        indexRandom = 0;
+        indexRandom = Math.floor(Math.random()*rows.length);
+        randomList = rows[indexRandom];
     }
     
 }
@@ -83,7 +88,7 @@ function startTimer() {
 }
 
 function startTimerAfterChose() {
-    timeLeft = 2;
+    timeLeft = 0;
     timeElement.textContent = timeLeft;
     timer2 = setInterval(() => {
         timeLeft--;
@@ -133,6 +138,7 @@ function nextQuestion() {
 
 // Termina il quiz
 function endQuiz() {
+    rows.splice(indexRandom,1);
     quizScreen.classList.add("hidden");
     resultScreen.classList.remove("hidden");
     finalScoreElement.textContent = score;

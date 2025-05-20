@@ -34,6 +34,7 @@ startBtn.addEventListener("click", startQuiz);
 
 // Funzione per iniziare il quiz
 function startQuiz() {
+    generateRandom();
     wrong = false;
     startScreen.classList.add("hidden");
     quizScreen.classList.remove("hidden");

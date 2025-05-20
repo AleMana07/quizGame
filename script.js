@@ -28,7 +28,7 @@ const playerNameInput = document.getElementById("player-name");
 const saveBtn = document.getElementById("save-btn");
 const leaderboardElement = document.getElementById("leaderboard");
 const restartBtn = document.getElementById("restart-btn");
-
+let correctBtn = null;
 // Avvia il quiz
 startBtn.addEventListener("click", startQuiz);
 
@@ -64,13 +64,19 @@ function loadQuestion() {
     questionElement.textContent = currentQuestion.question;
     optionsElement.innerHTML = "";
     
-    currentQuestion.options.forEach((option, index) => {
+
+    for(let i=0;i<currentQuestion.options.length;i++){
         const button = document.createElement("button");
-        button.textContent = option;
+        button.textContent = currentQuestion.options[i];
         button.classList.add("option-btn");
-        button.addEventListener("click", () => selectAnswer(index, button));
+        button.addEventListener("click", () => selectAnswer(i, button));
         optionsElement.appendChild(button);
-    });
+        if(i == currentQuestion.answer){
+            correctBtn = button;
+        }
+    }
+
+
 }
 
 // Timer
@@ -117,6 +123,8 @@ function selectAnswer(optionIndex, button) {
     }else if (!wrong){
         startTimerAfterChose();
         wrong = true;
+        correctBtn.style.backgroundColor = "green";
+        correctBtn.style.color = "white";
         button.style.backgroundColor = "red";
         button.style.color = "white";
     }

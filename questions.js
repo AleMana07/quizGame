@@ -1,3 +1,5 @@
+//matrice di n righe con 5 colonne ognuna, dove vengono salvate tutte
+//le domande e le risposte divise per argomento
 const questions = [
     [
         //domande generali

@@ -171,6 +171,7 @@ saveBtn.addEventListener("click", () => {
 restartBtn.addEventListener("click", () => {
     currentQuestionIndex = 0;
     score = 0;
+    scoreElement.textContent = score;
     resultScreen.classList.add("hidden");
     startQuiz();
 });
